@@ -5,6 +5,7 @@ using UnityEngine;
 public class Investment : MonoBehaviour
 {
   private float totalValue = 0;
+  private float rate = 1f;
 
   public void AddFunds(float amount)
   {
