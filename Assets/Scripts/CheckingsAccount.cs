@@ -10,7 +10,7 @@ public class CheckingsAccount : Investment {
     // when output -1, it means that the CheckingAccount has no money and the player needs to reallocate money to pay.
     public int RemoveFunds(int amount) {
         if (this.TotalFunds < amount) {
-            // 
+            //
             return -1;
         }
         this.TotalFunds -= amount;
