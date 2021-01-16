@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Investment : MonoBehaviour
 {
-  private float totalValue = 0;
-  private float rate = 1f;
+  protected float totalValue = 0;
+  protected float rate = 1f;
 
   public void AddFunds(float amount)
   {
