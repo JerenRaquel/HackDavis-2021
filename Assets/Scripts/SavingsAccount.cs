@@ -1,9 +1,9 @@
 public class SavingsAccount : Investment
 {
-    // the variables SavingAccount will use.
-    private float[] interestRates;
-    // to know when in time our interest rate should be.
-    private int interestRateIndex;
+  // the variables SavingAccount will use.
+  private float[] interestRates;
+  // to know when in time our interest rate should be.
+  private int interestRateIndex;
 
   // constructor for SavingsAccount object.
   public SavingsAccount(float[] interestRates)
