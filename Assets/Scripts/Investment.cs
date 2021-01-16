@@ -19,4 +19,5 @@ public class Investment : MonoBehaviour
   }
 
   public float TotalFunds => this.totalValue;
+
 }
