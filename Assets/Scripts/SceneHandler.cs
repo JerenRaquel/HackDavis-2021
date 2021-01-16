@@ -7,9 +7,22 @@ public class SceneHandler : MonoBehaviour
 {
   public enum SCENES { SELF = 0, TITLE, GAME }
 
+  #region Class Instance
+  public static SceneHandler instance = null;
+  private void CreateInstance()
+  {
+    if (instance == null)
+      instance = this;
+    else
+      Destroy(this);
+  }
+  #endregion
+  private void Awake() => CreateInstance();
+
   public SCENES defaultScene;
 
-  private void Start() {
+  private void Start()
+  {
     SwitchScene(defaultScene);
   }
 
@@ -18,16 +31,17 @@ public class SceneHandler : MonoBehaviour
     bool sceneLoaded = false;
     for (int i = 0; i < SceneManager.sceneCount; i++)
     {
-      if(SceneManager.GetSceneAt(i) == SceneManager.GetActiveScene())
+      if (SceneManager.GetSceneAt(i) == SceneManager.GetActiveScene())
         continue;
-      else if(SceneManager.GetSceneAt(i) == SceneManager.GetSceneByBuildIndex((int)scene))
+      else if (SceneManager.GetSceneAt(i) == SceneManager.GetSceneByBuildIndex((int)scene))
         sceneLoaded = true;
-      else{
+      else
+      {
         SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(i).buildIndex);
       }
     }
 
-    if(sceneLoaded)
+    if (sceneLoaded)
       return;
 
     SceneManager.LoadSceneAsync((int)scene, LoadSceneMode.Additive);

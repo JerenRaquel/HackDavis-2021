@@ -13,5 +13,6 @@ public class TitleScreneButtonController : MonoBehaviour
   public void StartGame()
   {
     Debug.Log("Starting");
+    SceneHandler.instance.SwitchScene(SceneHandler.SCENES.GAME);
   }
 }
