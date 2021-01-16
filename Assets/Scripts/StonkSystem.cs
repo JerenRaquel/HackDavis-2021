@@ -5,14 +5,20 @@ using UnityEngine;
 [System.Serializable]
 public class RateComponents
 {
+  // The base rate at which the value grows
   public float baseRate = 5f;
+  // The chance of growth
   public float luckyPercentage = 50f;
+  // The starting value
   public float startingRate = 1f;
+  // The range of flucuations
   public float fluxAmplitued = 50f;
 }
 
 public class StonkSystem : MonoBehaviour
 {
+  // @param int year: the year or time of the stonk value
+  // @param in RateCompenents components: Look at the class
   public float GetRateAtYear(int year, in RateComponents components)
   {
     float modifier = 1f * (components.luckyPercentage - Random.Range(0f, 25f));
@@ -24,6 +30,10 @@ public class StonkSystem : MonoBehaviour
     return y;
   }
 
+  // @param int year: the year or time of the stonk value
+  // @param float prevYearValue: the value of the prevous year's rateValue
+  // @param out float yearValue: the value of the current year
+  // @param in RateCompenents components: Look at the class
   public float GetRateAsPercentageAtYear(int year, float prevYearValue, out float yearValue, in RateComponents components)
   {
     float value = GetRateAtYear(year, in components);

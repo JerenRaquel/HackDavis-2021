@@ -451,7 +451,7 @@ MonoBehaviour:
   isOn: 0
   rateComponents:
     baseRate: 5
-    luckyPercentage: 60
+    luckyPercentage: 50
     startingRate: 32
     fluxAmplitued: 50
   textbox: {fileID: 1532948013}
