@@ -2899,7 +2899,7 @@ MonoBehaviour:
   initialValue: 0
   finalValue: 100
   rate: 1
-  updateDelay: 0.1
+  updateDelay: 0.05
   type: 1
 --- !u!114 &3262320179578874394
 MonoBehaviour:

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daba2239007656a4489b8b2c9862aed7, type: 3}
   m_Name: Grandma Got Ran Over By A Truck
   m_EditorClassIdentifier: 
-  name: Grandparents got ran over by a .... TRUCK
+  name: Grandma got ran over by a .... TRUCK
   description: "You just received news that your grandparents have passed away \u201Cpeacefully\u201D.
     Being their favorite grandchild, you inherited $90,000 from them. RIP in peace
     grandma and grandpa. The money will be invested in your memory."

@@ -19,7 +19,7 @@ MonoBehaviour:
     chance: 70
   - amount: -50000
     chance: 29
-  - amount: -25000
+  - amount: -250000
     chance: 1
   nestedEvent: {fileID: 0}
   canEndGame: 0
