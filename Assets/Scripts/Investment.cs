@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Investment : MonoBehaviour
 {
-    protected float totalValue = 0;
+    protected int totalValue = 0;
     protected float rate = 1f;
 
     protected int year = 0;
 
-    public void Deposit(float amount)
+    public void Deposit(int amount)
     {
         this.totalValue += amount;
     }
 
-    public void Withdraw(float amount)
+    public void Withdraw(int amount)
     {
         this.totalValue -= amount;
         this.totalValue = this.totalValue < 0 ? 0 : this.totalValue;
     }
 
-    public float TotalFunds => this.totalValue;
+    public int TotalFunds => this.totalValue;
 
 }

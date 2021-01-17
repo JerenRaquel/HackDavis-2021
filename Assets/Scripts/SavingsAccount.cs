@@ -5,14 +5,12 @@ using UnityEngine;
 public class SavingsAccount : Investment
 {
     // the variables SavingAccount will use.
-    private float[] interestRates;
+    public float[] interestRates;
 
-    // constructor for SavingsAccount object.
-    public SavingsAccount(float[] interestRates, int year)
+    private void Start()
     {
         this.totalValue = 0;
-        this.year = year;
-        this.interestRates = interestRates;
+        this.year = 0;
         this.rate = interestRates[year];
     }
 
@@ -31,6 +29,9 @@ public class SavingsAccount : Investment
     // update the interest rate
     public void Progression()
     {
+        if (!(GameController.instance.IsGameActive))
+            return;
+
         totalValue = Mathf.RoundToInt(totalValue + totalValue * rate);
         year++;
         this.rate = interestRates[year];
