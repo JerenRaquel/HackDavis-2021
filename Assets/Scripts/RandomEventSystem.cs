@@ -5,18 +5,14 @@ using UnityEngine;
 [System.Serializable]
 public class RandomEvent
 {
-  public string name = "No Name";
-  [TextArea(10, 15)]
-  public string description = "";
-  public float amount = 0;
-  public RandomEvent nestedEvent = null;
+
 }
 
 public class RandomEventSystem : MonoBehaviour
 {
-  public RandomEvent[] events;
+  public EventData[] events;
 
-  public float GetRandomEventAmount(RandomEvent rngEvent = null)
+  public float GetRandomEventAmount(EventData rngEvent = null)
   {
     // Check if event is played
     int chance = Random.Range(0, 1);
@@ -24,7 +20,7 @@ public class RandomEventSystem : MonoBehaviour
       return 0;
 
     // Get event
-    RandomEvent ree;
+    EventData ree;
     if (rngEvent == null)
       ree = events[Random.Range(0, events.Length)];
     else
