@@ -114,6 +114,10 @@ public class Stocks : Investment
         return result;
     }
 
+    public float DisplayPercentageChange(int id) {
+        return (List_Stonks[id].CurrentValue / List_Stonks[id].PreviousValue - 1) * 100f;
+    }
+
     /* This function indicates progression of one year for Stocks.   
        After each year, current price of shares from stock companies
        are subjected to change. This function, therefore, updates
@@ -136,8 +140,8 @@ public class Stocks : Investment
         List_Stonks[i].CurrentValue = ss.GetRateAtYear(year, rateComponents[i]);
       }
       year++;
-
     }
+
 }
 
 
