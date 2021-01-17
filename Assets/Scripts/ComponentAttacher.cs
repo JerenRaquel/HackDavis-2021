@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class EventReportBox
 {
+  public bool active = false;
   public GameObject panel;
   public EventReportMenu menu;
   public TMPro.TMP_Text titleBox;
@@ -20,7 +21,7 @@ public class ComponentAttacher : MonoBehaviour
   {
     if (yearProgressBar != null)
       GameController.instance.yearProgressBar = yearProgressBar;
-    if (eventReportBox != null)
+    if (eventReportBox != null && eventReportBox.active)
       GameController.instance.eventReportBox = eventReportBox;
   }
 }

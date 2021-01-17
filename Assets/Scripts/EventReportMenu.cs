@@ -8,12 +8,15 @@ public class EventReportMenu : MonoBehaviour
   {
     CHECKING = 0b00000001,
     SAVINGS = 0b00000010,
-    BOTH = CHECKING | SAVINGS
+    RECIEVE = 0b00000100,
+    BOTH = CHECKING | SAVINGS,
+    ALL = BOTH | RECIEVE
   }
 
   public GameObject panel;
   public GameObject savings;
   public GameObject checking;
+  public GameObject recieve;
 
   void Start()
   {
@@ -26,6 +29,8 @@ public class EventReportMenu : MonoBehaviour
       savings.SetActive(true);
     if (!checking.activeSelf)
       checking.SetActive(true);
+    if (!recieve.activeSelf)
+      recieve.SetActive(true);
 
     panel.SetActive(false);
     GameController.instance.SwitchState(GameController.GAME_STATES.CONTINUE);
@@ -48,19 +53,33 @@ public class EventReportMenu : MonoBehaviour
     GameController.instance.SwitchState(GameController.GAME_STATES.SAVE_AND_QUIT);
   }
 
+  public void GetPayment()
+  {
+    GameController.instance.AddFunds();
+    ClosePanel();
+  }
+
   public void DisablePayment(PAYMENT_TYPE type)
   {
     switch (type)
     {
+      case PAYMENT_TYPE.ALL:
+        savings.SetActive(false);
+        checking.SetActive(false);
+        recieve.SetActive(false);
+        break;
       case PAYMENT_TYPE.BOTH:
-        savings.SetActive(true);
-        checking.SetActive(true);
+        savings.SetActive(false);
+        checking.SetActive(false);
         break;
       case PAYMENT_TYPE.SAVINGS:
-        savings.SetActive(true);
+        savings.SetActive(false);
         break;
       case PAYMENT_TYPE.CHECKING:
-        checking.SetActive(true);
+        checking.SetActive(false);
+        break;
+      case PAYMENT_TYPE.RECIEVE:
+        recieve.SetActive(false);
         break;
     }
   }

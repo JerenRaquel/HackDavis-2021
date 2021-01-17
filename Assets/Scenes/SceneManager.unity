@@ -502,6 +502,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statTracker: {fileID: 1433720502}
+  yearProgressBar: {fileID: 0}
+  randomEventSystem: {fileID: 2143947470}
+  eventReportBox:
+    active: 0
+    panel: {fileID: 0}
+    menu: {fileID: 0}
+    titleBox: {fileID: 0}
+    descriptionBox: {fileID: 0}
 --- !u!4 &2138960499
 Transform:
   m_ObjectHideFlags: 0

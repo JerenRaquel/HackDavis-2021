@@ -25,19 +25,20 @@ public class PauseMenu : MonoBehaviour
 
   public void SwitchState()
   {
-    if (!isPaused)
-    {
-      isPaused = true;
-      if (menu.activeSelf)
-        menu.SetActive(isPaused);
-      GameController.instance.SwitchState(GameController.GAME_STATES.PAUSE);
-    }
-    else if (isPaused)
+    // Turn it off
+    if (isPaused)
     {
       isPaused = false;
-      if (!menu.activeSelf)
-        menu.SetActive(isPaused);
+      if (menu.activeSelf)
+        menu.SetActive(false);
       GameController.instance.SwitchState(GameController.GAME_STATES.CONTINUE);
+    }
+    else if (!isPaused)
+    {
+      isPaused = true;
+      if (!menu.activeSelf)
+        menu.SetActive(true);
+      GameController.instance.SwitchState(GameController.GAME_STATES.PAUSE);
     }
   }
 

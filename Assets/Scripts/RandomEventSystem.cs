@@ -11,20 +11,23 @@ public class ChanceAmount
 
 public class EventReturnVal
 {
+  private bool eventFound;
   private float amount;
   private string msg;
   private string title;
 
-  public EventReturnVal(float amount, string msg, string title)
+  public EventReturnVal(float amount, string msg, string title, bool eventState = true)
   {
     this.amount = amount;
     this.msg = msg;
     this.title = title;
+    this.eventFound = eventState;
   }
 
   public float Amount => this.amount;
   public string Message => this.msg;
   public string Title => this.title;
+  public bool EventFound => this.eventFound;
 }
 
 public class RandomEventSystem : MonoBehaviour
@@ -35,12 +38,12 @@ public class RandomEventSystem : MonoBehaviour
   {
     // Base case
     if (rngEvent == null && recurse)
-      return new EventReturnVal(0, "", "");
+      return new EventReturnVal(0, "", "", false);
 
     // Check if event is played
-    int chance = Random.Range(0, 1);
+    int chance = Random.Range(0, 2);
     if (chance == 0)
-      return new EventReturnVal(0, "", "");
+      return new EventReturnVal(0, "", "", false);
 
     // Get event
     EventData ree;
@@ -60,7 +63,7 @@ public class RandomEventSystem : MonoBehaviour
       // return GetAmount(in ree.amounts) + GetRandomEventAmount(ree.nestedEvent).amount;
     }
 
-    return new EventReturnVal(0, "", "");
+    return new EventReturnVal(0, "", "", false);
   }
 
   private float GetAmount(in ChanceAmount[] amounts)

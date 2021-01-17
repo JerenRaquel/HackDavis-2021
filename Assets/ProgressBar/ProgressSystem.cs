@@ -55,13 +55,14 @@ namespace ContainerBars
     private float internalDelayScore;
     private bool isComplete;
     private bool isInitialized = false;
+    private bool isPaused = false;
     #endregion
 
     private void Update()
     {
       if (this.type != TYPE.STATIC)
       {
-        if (!this.isComplete && this.isInitialized && this.internalDelayScore <= Time.time)
+        if (!this.isComplete && this.isInitialized && this.internalDelayScore <= Time.time && !this.isPaused)
         {
           this.internalDelayScore = Time.time + updateDelay;
 
@@ -89,9 +90,13 @@ namespace ContainerBars
     }
 
     #region Methods
-    public void Initialize(CallBack callback = null)
+    public void Initialize(CallBack callback = null, string text = null)
     {
-      this.text.text = this.barName;
+      if (text == null)
+        this.text.text = this.barName;
+      else
+        this.text.text = text;
+
       this.callback = callback;
       this.startTime = Time.time;
       this.internalDelayScore = this.startTime;
@@ -104,6 +109,7 @@ namespace ContainerBars
       this.isInitialized = true;
       this.background.color = this.backgroundColor;
       SetColorBars();
+      this.isPaused = false;
     }
 
     public void AddToProgressAsPercentage(float percentageValue)
@@ -179,6 +185,7 @@ namespace ContainerBars
     public float TimeTaken => Time.time - this.startTime;
     public bool IsInitialized => this.isInitialized;
     public bool IsComplete => this.isComplete;
+    public bool IsPaused { get { return this.isPaused; } set { this.isPaused = value; } }
     #endregion
   }
 }

@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
   private bool yearProcessing = false;
   private int year = 0;
   private float owedMoney = 0f;
+  private float gottenMoney = 0f;
 
   private void Update()
   {
@@ -45,17 +46,32 @@ public class GameController : MonoBehaviour
         yearProgressBar.Initialize(() =>
         {
           EventReturnVal result = randomEventSystem.GetRandomEvent();
-          // Update assets base on result
-          if (result.Amount < 0)
-            this.owedMoney = result.Amount;
-          // Check if can pay
-          this.eventReportBox.panel.SetActive(true);
-          this.eventReportBox.titleBox.text = result.Title;
-          this.eventReportBox.descriptionBox.text = result.Message;
+          if (result.EventFound)
+          {
+            // Update assets base on result
+            if (result.Amount < 0)
+            {
+              this.owedMoney = result.Amount;
+              this.eventReportBox.menu.DisablePayment(EventReportMenu.PAYMENT_TYPE.RECIEVE);
+              // Check if can pay
+            }
+            else if (result.Amount > 0)
+            {
+              this.gottenMoney = result.Amount;
+              this.eventReportBox.menu.DisablePayment(EventReportMenu.PAYMENT_TYPE.BOTH);
+            }
+            if (result.Amount != 0)
+            {
+              this.eventReportBox.panel.SetActive(true);
+              this.eventReportBox.titleBox.text = result.Title;
+              this.eventReportBox.descriptionBox.text = result.Message;
+            }
+          }
           this.year++;
           this.yearProcessing = false;
-          SwitchState(GAME_STATES.PAUSE);
-        });
+          if (result.EventFound)
+            SwitchState(GAME_STATES.PAUSE);
+        }, "Year: " + (this.year + 1).ToString() + " Progress");
         break;
       case GAME_STATES.SAVE_AND_QUIT:
         this.isPaused = true;
@@ -65,9 +81,11 @@ public class GameController : MonoBehaviour
         break;
       case GAME_STATES.PAUSE:
         this.isPaused = true;
+        this.yearProgressBar.IsPaused = true;
         break;
       case GAME_STATES.CONTINUE:
         this.isPaused = false;
+        this.yearProgressBar.IsPaused = false;
         break;
     }
   }
@@ -80,6 +98,12 @@ public class GameController : MonoBehaviour
   public void RemoveFromSavings()
   {
     owedMoney = 0f;
+  }
+
+  public void AddFunds()
+  {
+    // Add funds
+    gottenMoney = 0f;
   }
 
   public bool CheckForAvailable(float amount, bool checkChecking = true)
