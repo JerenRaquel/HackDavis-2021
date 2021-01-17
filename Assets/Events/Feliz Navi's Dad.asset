@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: daba2239007656a4489b8b2c9862aed7, type: 3}
-  m_Name: Chad Moment
+  m_Name: Feliz Navi's Dad
   m_EditorClassIdentifier: 
-  name: Chad Moment
-  description: 'You enter a $10,000 raffle for fun and laughs with friends, having
-    zero expectation that neither of you would win. Well, surprise, surprise! Your
-    friend Chad won the $10,000 raffle! Not you. But hey, he was nice enough to give
-    you $1,000! '
+  name: Feliz Navi's Dad
+  description: Merry Christmas! Your cousin landed her first six-figure job and decided
+    to give you $1,000 along with everyone else in the family for presents. So generous!
   amounts:
   - amount: 1000
     chance: 100

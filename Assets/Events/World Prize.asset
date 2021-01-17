@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daba2239007656a4489b8b2c9862aed7, type: 3}
   m_Name: World Prize
   m_EditorClassIdentifier: 
-  name: No Name
-  description: 
-  amounts: []
+  name: World Prize?
+  description: "Congratz! You won $1500 for the world\u2019s\u2026..ugliest person\u2026.?"
+  amounts:
+  - amount: 1500
+    chance: 100
   nestedEvent: {fileID: 0}
   canEndGame: 0
   gameOverChance: 0

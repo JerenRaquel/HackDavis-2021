@@ -9,16 +9,35 @@ public class ChanceAmount
   public float chance;
 }
 
+public class EventReturnVal
+{
+  private float amount;
+  private string msg;
+
+  public EventReturnVal(float amount, string msg)
+  {
+    this.amount = amount;
+    this.msg = msg;
+  }
+
+  public float Amount => this.amount;
+  public string Message => this.msg;
+}
+
 public class RandomEventSystem : MonoBehaviour
 {
   public EventData[] events;
 
-  public float GetRandomEventAmount(EventData rngEvent = null)
+  public EventReturnVal GetRandomEventAmount(EventData rngEvent = null, bool dive = false)
   {
+    // Base case
+    if (rngEvent == null && dive)
+      return new EventReturnVal(0, "");
+
     // Check if event is played
     int chance = Random.Range(0, 1);
     if (chance == 0)
-      return 0;
+      return new EventReturnVal(0, "");
 
     // Get event
     EventData ree;
@@ -29,9 +48,16 @@ public class RandomEventSystem : MonoBehaviour
 
     // Check for nested event
     if (ree != null)
-      return GetAmount(in ree.amounts) + GetRandomEventAmount(ree.nestedEvent);
+    {
+      EventReturnVal temp = GetRandomEventAmount(ree.nestedEvent);
+      if (ree.nestedEvent != null)
+        return new EventReturnVal(GetAmount(in ree.amounts) + temp.Amount, "-" + ree.description + "\n" + temp.Message);
+      else
+        return new EventReturnVal(GetAmount(in ree.amounts), "-" + ree.description);
+      // return GetAmount(in ree.amounts) + GetRandomEventAmount(ree.nestedEvent).amount;
+    }
 
-    return 0;
+    return new EventReturnVal(0, "");
   }
 
   private float GetAmount(in ChanceAmount[] amounts)
