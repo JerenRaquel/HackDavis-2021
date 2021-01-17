@@ -12,9 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daba2239007656a4489b8b2c9862aed7, type: 3}
   m_Name: Hi Youtube
   m_EditorClassIdentifier: 
-  name: No Name
-  description: 
-  amounts: []
+  name: HI Youtube?
+  description: "While you were going about your day on a stroll in the city, two
+    mysterious men came up to you! One of them hands you a wad of cash totaling $2,000
+    and faces toward the camera held by his friend exclaiming, \u201CHit that like
+    and subscribe to see us help out others like this poor person!\u201D. Ah, he
+    thought you were a homeless person based on your appearance and wanted to show
+    his viewers on YouTube how nice of a person he was. You are not sure how to feel
+    about this but you did get $2,000!"
+  amounts:
+  - amount: 2000
+    chance: 100
   nestedEvent: {fileID: 0}
   canEndGame: 0
   gameOverChance: 0
