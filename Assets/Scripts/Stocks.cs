@@ -1,39 +1,41 @@
 public class Stock
 {
-    int value;
-    int currentValue;
-    int id;
+  int value;
+  int currentValue;
+  int id;
 
-    public Stock(int currentValue, int id)
-    {
-        this.value = 0;
-        this.currentValue = currentValue;
-        this.id = id;
-    }
+  public Stock(int currentValue, int id)
+  {
+    this.value = 0;
+    this.currentValue = currentValue;
+    this.id = id;
+  }
 
-    public int Value { get { return this.value; } set { this.value = value; } }
-    public int Id => this.id;
-    public int CurrentValue { get { return this.currentValue; } set { this.currentValue = value; } }
+  public int Value { get { return this.value; } set { this.value = value; } }
+  public int Id => this.id;
+  public int CurrentValue { get { return this.currentValue; } set { this.currentValue = value; } }
 }
 
-public class Stocks : Investment, StonkSystem
+public class Stocks : Investment
 {
-    Stock[] StonksArray = new Stock[4];
+  StonkSystem ss = new StonkSystem();
 
-    public Stocks(int[] initialValues)
-    {
+  Stock[] StonksArray = new Stock[4];
 
-    }
+  public Stocks(int[] initialValues)
+  {
 
-    public Buy(int value)
-    {
+  }
 
-    }
+  public void Buy(int value)
+  {
 
-    public Sell(int value)
-    {
+  }
 
-    }
+  public void Sell(int value)
+  {
+
+  }
 }
 
 
