@@ -5,15 +5,12 @@ using UnityEngine;
 public class SavingsAccount : Investment
 {
     // the variables SavingAccount will use.
-    public float[] interestRates = { 1, 2, 4, 5, 6, 7, 8, 9, 10 };
+    public float[] interestRates;
 
-
-    // constructor for SavingsAccount object.
-    public SavingsAccount(float[] interestRates, int year)
+    private void Start()
     {
         this.totalValue = 0;
-        this.year = year;
-        this.interestRates = interestRates;
+        this.year = 0;
         this.rate = interestRates[year];
     }
 

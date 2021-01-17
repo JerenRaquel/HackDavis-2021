@@ -6,10 +6,10 @@ public class CheckingsAccount : Investment
     int income;
     int expense;
 
-    public CheckingsAccount()
+    private void Start()
     {
-        income = 10000;
-        expense = 0;
+        this.income = 10000;
+        this.expense = 0;
     }
 
     // when output -1, it means that the CheckingAccount has no money and the player needs to reallocate money to pay.

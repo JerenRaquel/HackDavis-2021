@@ -34,10 +34,10 @@ public class CertificatesOfDeposit : Investment
     // The constructor for the CertificatesOfDeposits feature,
     // Meant to be called at the beginning when the game starts
     // input: A float array of interest rates, and the current year
-    public CertificatesOfDeposit(float[] interestRates, int year)
+
+    private void Start()
     {
-        this.year = year;
-        this.interestRates = interestRates;
+        this.year = 0;
         this.rate = interestRates[year];
         this.List_CDs = new List<CD>();
     }

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2232,6 +2232,7 @@ MonoBehaviour:
     luckyPercentage: 0
     startingRate: 0
     fluxAmplitued: 0
+  initialValues: 10000000160000000600000012000000
 --- !u!114 &1550613054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2244,7 +2245,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d9cc7fcd3c83f4ea56eb6446395eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interestRates: []
+  interestRates:
+  - 9.19
+  - 8.91
+  - 8.87
+  - 8.77
+  - 8.72
+  - 8.5
+  - 7.95
+  - 7.44
+  - 6.31
+  - 13.45
+  - 12.76
+  - 12.41
+  - 11.27
+  - 11.18
+  - 10.79
+  - 9.28
+  - 8.96
+  - 8.61
+  - 8.59
+  - 8.49
+  - 8.45
+  - 8.14
+  - 7.78
+  - 7.67
+  - 7.37
+  - 6.88
+  - 6.71
+  - 6.61
+  - 6.59
+  - 5.94
+  - 5.87
+  - 5.58
+  - 5.49
+  - 5.43
+  - 4.91
+  - 4.84
+  - 4.28
+  - 4.25
+  - 4.08
+  - 3.91
+  - 3.45
+  - 3.34
+  - 3.11
+  - 2.92
+  - 2.89
+  - 2.84
+  - 2.6
+  - 2.58
+  - 1.82
+  - 1.56
 --- !u!114 &1550613055
 MonoBehaviour:
   m_ObjectHideFlags: 0
