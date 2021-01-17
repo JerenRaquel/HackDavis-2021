@@ -15,6 +15,7 @@ public class Stock
 
     public int Shares { get { return this.shares; } set { this.shares = value; } }
     public string Name { get; set; }
+    public float PreviousValue {get; set;}
     public int CurrentValue { get { return this.currentValue; } set { this.currentValue = value; } }
 }
 
@@ -23,6 +24,14 @@ public class Stocks : Investment
 {
     // StonkSystem imported, has functions to get rate of change of a stock for progression
     StonkSystem ss = new StonkSystem();
+    public StonkSystem.RateComponents rateComponents0 = new StonkSystem.RateComponents(3f, 70f, 121f, 80f);
+    public StonkSystem.RateComponents rateComponents1 = new StonkSystem.RateComponents(7f, 70f, 44f, 80f);
+    public StonkSystem.RateComponents rateComponents2 = new StonkSystem.RateComponents(1f, 55f, 353f, 30f);
+    public StonkSystem.RateComponents rateComponents3 = new StonkSystem.RateComponents(3f, 50f, 143f, 35f);
+
+    // list of all 4 stock rates used in calculation to represent different companies
+    StonkSystem.RateComponents[] List_Rates = new StonkSystem.RateComponents[4];
+
 
     // list of all 4 stock companies
     Stock[] List_Stonks = new Stock[4];
@@ -35,11 +44,21 @@ public class Stocks : Investment
         for (int i = 0; i < 4; i++)
         {
             List_Stonks[i] = new Stock(initialValues[i]);
+            List_Stonks[i].CurrentYearRate = 1f;
         }
+
+        // names
         List_Stonks[0].Name = "GOGA";
         List_Stonks[1].Name = "TUSLA";
         List_Stonks[2].Name = "UWUZON";
         List_Stonks[3].Name = "WCDONALDS";
+
+        // initializing all 4 rates with different values to represent their respective stock
+        List_Rates[0] = rateComponents0;
+        List_Rates[1] = rateComponents1;
+        List_Rates[2] = rateComponents2;
+        List_Rates[3] = rateComponents3;
+
     }
 
     // input: total amount in checkings account, ID of that stock
@@ -61,6 +80,10 @@ public class Stocks : Investment
             shares = maxMoney / List_Stonks[id].CurrentValue;
         }
         List_Stonks[id].Shares += shares;
+    }
+
+    public string GetName(int id) {
+        return List_Stonks[id].Name;
     }
 
     // input: # of shares, ID of the stock
@@ -102,14 +125,18 @@ public class Stocks : Investment
     //              out float yearValue, in RateComponents components)
     public void Progression () 
     {
-      foreach (Stock stock in List_Stonks)
+      // goes through all the stocks, saves their currentValue, then update their value using formula.
+      for(int i = 0; i < 4; i++)
       {
-        rate = ss.
-        if (year != 0)
-        {
-          cd.Year--;
-          cd.Value = Mathf.RoundToInt(cd.Value + cd.Value * (1 + cd.Rate));
+        // saves the CurrentValue to PreviousValue
+        List_Stonks[i].PreviousValue = List_Stonks[i].CurrentValue;
+
+        // Gets the rate for the current year
+        // This rate will subject current price of stock to change
+        List_Stonks[i].CurrentValue = ss.GetRateAtYear(year, rateComponents[i]);
       }
+      year++;
+
     }
 }
 

@@ -13,12 +13,20 @@ public class RateComponents
   public float startingRate = 1f;
   // The range of flucuations
   public float fluxAmplitued = 50f;
+
+  public RateComponents(float baseRate, float luckyPercentage, float startingRate, float fluxAmplitued) {
+    this.baseRate = baseRate;
+    this.luckyPercentage = luckyPercentage;
+    this.startingRate = startingRate;
+    this.fluxAmplitued = fluxAmplitued;
+  }
 }
 
 public class StonkSystem : MonoBehaviour
 {
   // @param int year: the year or time of the stonk value
   // @param in RateCompenents components: Look at the class
+  // Get stock price at year
   public float GetRateAtYear(int year, in RateComponents components)
   {
     float modifier = 1f * (components.luckyPercentage - Random.Range(0f, 25f));

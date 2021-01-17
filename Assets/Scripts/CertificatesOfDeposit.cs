@@ -68,7 +68,7 @@ public class CertificatesOfDeposit : Investment
         if (year != 0)
         {
           cd.Year--;
-          cd.Value = Mathf.RoundToInt(cd.Value + cd.Value * (1 + cd.Rate));
+          cd.Value = Mathf.RoundToInt(cd.Value + cd.Value * cd.Rate);
         }
       }
       this.rate = interestRates[year];
