@@ -65,9 +65,6 @@ public class CertificatesOfDeposit : Investment
     this.year++;
     foreach (CD cd in List_CDs)
     {
-      this.year++;
-      foreach (CD cd in List_CDs)
-      {
         if (year != 0)
         {
           cd.Year--;
@@ -76,7 +73,5 @@ public class CertificatesOfDeposit : Investment
       }
       this.rate = interestRates[year];
     }
-    this.rate = interestRates[year];
-  }
 
 }
