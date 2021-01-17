@@ -41,18 +41,25 @@ public class CheckingsAccount : Investment
         income += incomeAmount;
     }
 
-    public int Progression()
+    public int GetValue()
     {
+        return this.totalValue;
+    }
+
+    public void Progression()
+    {
+        if (!(GameController.instance.IsGameActive))
+            return;
+
         this.totalValue += income;
 
         // error checking for a game over
         if (totalValue < expense)
         {
             // -1 placeholder for function to divert funds or game over.
-            return -1;
+            return;
         }
         totalValue -= expense;
-        return 1;
     }
 
 
