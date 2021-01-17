@@ -13,25 +13,15 @@ public class Stock
     this.currentValue = currentValue;
   }
 
-<<<<<<< HEAD
-  public int Shares { get { return this.shares; } set { this.shares = value; } }
-  public string Name { get; set; }
-  public int CurrentValue { get { return this.currentValue; } set { this.currentValue = value; } }
-=======
     public int Shares { get { return this.shares; } set { this.shares = value; } }
     public string Name { get; set; }
     public float PreviousValue {get; set;}
     public int CurrentValue { get { return this.currentValue; } set { this.currentValue = value; } }
->>>>>>> ac700934f6bf6e64f370731d6f757f725d1aeb20
 }
 
 // Stocks class
 public class Stocks : Investment
 {
-<<<<<<< HEAD
-  // StonkSystem imported, has functions to get rate of change of a stock for progression
-  StonkSystem ss = new StonkSystem();
-=======
     // StonkSystem imported, has functions to get rate of change of a stock for progression
     StonkSystem ss = new StonkSystem();
     public StonkSystem.RateComponents rateComponents0 = new StonkSystem.RateComponents(3f, 70f, 121f, 80f);
@@ -42,7 +32,6 @@ public class Stocks : Investment
     // list of all 4 stock rates used in calculation to represent different companies
     StonkSystem.RateComponents[] List_Rates = new StonkSystem.RateComponents[4];
 
->>>>>>> ac700934f6bf6e64f370731d6f757f725d1aeb20
 
   // list of all 4 stock companies
   Stock[] List_Stonks = new Stock[4];
@@ -51,17 +40,11 @@ public class Stocks : Investment
   // Stocks constructor. Purpose is to create and initialize all 4 stock objects with respective names and starting values
   public Stocks(int[] initialValues)
   {
-    // initialize all 4 stock objects and give them names
-    for (int i = 0; i < 4; i++)
-    {
-<<<<<<< HEAD
-      List_Stonks[i] = new Stock(initialValues[i]);
-=======
         // initialize all 4 stock objects and give them names
         for (int i = 0; i < 4; i++)
         {
             List_Stonks[i] = new Stock(initialValues[i]);
-            List_Stonks[i].CurrentYearRate = 1f;
+            List_Stonks[i].PreviousValue = List_Stonks[i].CurrentValue;
         }
 
         // names
@@ -75,13 +58,6 @@ public class Stocks : Investment
         List_Rates[1] = rateComponents1;
         List_Rates[2] = rateComponents2;
         List_Rates[3] = rateComponents3;
-
->>>>>>> ac700934f6bf6e64f370731d6f757f725d1aeb20
-    }
-    List_Stonks[0].Name = "GOGA";
-    List_Stonks[1].Name = "TUSLA";
-    List_Stonks[2].Name = "UWUZON";
-    List_Stonks[3].Name = "WCDONALDS";
   }
 
   // input: total amount in checkings account, ID of that stock
