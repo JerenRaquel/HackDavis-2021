@@ -13,14 +13,20 @@ public class EventReportMenu : MonoBehaviour
     ALL = BOTH | RECIEVE
   }
 
-  public GameObject panel;
+  public GameObject[] panels;
   public GameObject savings;
   public GameObject checking;
   public GameObject recieve;
 
   void Start()
   {
-    panel.SetActive(false);
+    SwitchPanels(false);
+  }
+
+  private void SwitchPanels(bool state)
+  {
+    for (int i = 0; i < panels.Length; i++)
+      panels[i].SetActive(state);
   }
 
   private void ClosePanel()
@@ -32,7 +38,7 @@ public class EventReportMenu : MonoBehaviour
     if (!recieve.activeSelf)
       recieve.SetActive(true);
 
-    panel.SetActive(false);
+    SwitchPanels(false);
     GameController.instance.SwitchState(GameController.GAME_STATES.CONTINUE);
   }
 
