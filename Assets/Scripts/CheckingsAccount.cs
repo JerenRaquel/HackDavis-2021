@@ -47,6 +47,7 @@ public class CheckingsAccount : Investment
         // error checking for a game over
         if (totalValue < expense)
         {
+            // -1 placeholder for function to divert funds or game over.
             return -1;
         }
         totalValue -= expense;
