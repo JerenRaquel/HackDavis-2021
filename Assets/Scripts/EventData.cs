@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EventData", menuName = "Investments/EventData", order = 0)]
 public class EventData : ScriptableObject
 {
-  public string name = "No Name";
+  public new string name = "No Name";
   [TextArea(10, 15)]
   public string description = "";
   public ChanceAmount[] amounts;

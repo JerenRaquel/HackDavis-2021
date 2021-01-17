@@ -34,7 +34,10 @@ public class GameController : MonoBehaviour
     if (!yearProcessing && !isPaused)
     {
       yearProcessing = true;
-      SwitchState(GAME_STATES.NEW_YEAR);
+      if (year == 50)
+        SwitchState(GAME_STATES.SAVE_AND_QUIT);
+      else
+        SwitchState(GAME_STATES.NEW_YEAR);
     }
   }
 
@@ -118,5 +121,6 @@ public class GameController : MonoBehaviour
     }
   }
 
-  public bool IsGameActive => this.isPaused;
+  public bool IsGameActive => !this.isPaused;
+  public int CurrentYear => this.year;
 }
