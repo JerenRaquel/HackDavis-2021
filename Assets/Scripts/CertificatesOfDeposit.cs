@@ -65,11 +65,16 @@ public class CertificatesOfDeposit : Investment
     this.year++;
     foreach (CD cd in List_CDs)
     {
-      if (year != 0)
+      this.year++;
+      foreach (CD cd in List_CDs)
       {
-        cd.Year--;
-        cd.Value = cd.Value + cd.Value * (1 + cd.Rate);
+        if (year != 0)
+        {
+          cd.Year--;
+          cd.Value = Mathf.RoundToInt(cd.Value + cd.Value * (1 + cd.Rate));
+        }
       }
+      this.rate = interestRates[year];
     }
     this.rate = interestRates[year];
   }

@@ -16,7 +16,7 @@ public class SavingsAccount : Investment
     // Porgression should be called everytime the global game timer refreshes.
     public void Progression()
     {
-        totalValue = totalValue + totalValue * rate;
+        totalValue = Mathf.RoundToInt(totalValue + totalValue * rate);
         year++;
         this.rate = interestRates[year];
     }
