@@ -42,12 +42,18 @@ public class Stocks : Investment, StonkSystem
         List_Stonks[id].shares += shares;
     }
 
-    public void Sell(int shares, int id)
+    public int Sell(int shares, int id)
     {
-        if (shares * List_Stonks[id].CurrentValue > maxMoney) {
-            shares = maxMoney / List_Stonks[id].CurrentValue;
+        int result;
+        if (shares > List_Stonks[id].Shares) {
+            result = List_Stonks[id].Shares * List_Stonks[id].CurrentValue;
+            List_Stonks[id].Shares = 0;
+        } 
+        else {
+            List_Stonks[id].Shares -= shares;
+            result = shares * List_Stonks[id].CurrentValue;
         }
-        List_Stonks[id].shares += shares;
+        return result;
     }
 
 }
