@@ -26,6 +26,8 @@ public class Stocks : Investment
 {
     // StonkSystem imported, has functions to get rate of change of a stock for progression
     StonkSystem ss = new StonkSystem();
+
+    // Init of all the rateComponents for each individual company / stock
     public RateComponents rateComponents0 = new RateComponents(3f, 70f, 121f, 80f);
     public RateComponents rateComponents1 = new RateComponents(7f, 70f, 44f, 80f);
     public RateComponents rateComponents2 = new RateComponents(1f, 55f, 353f, 30f);
@@ -83,6 +85,7 @@ public class Stocks : Investment
         List_Stonks[id].Shares += shares;
     }
 
+    // Returns the name of the stock of id
     public string GetName(int id)
     {
         return List_Stonks[id].Name;
@@ -100,16 +103,30 @@ public class Stocks : Investment
             result = List_Stonks[id].Shares * List_Stonks[id].CurrentValue;
             List_Stonks[id].Shares = 0;
         }
-
-        result = shares * List_Stonks[id].CurrentValue;
-        List_Stonks[id].Shares -= shares;
+        else
+        {
+            result = shares * List_Stonks[id].CurrentValue;
+            List_Stonks[id].Shares -= shares;
+        }
 
         return result;
     }
 
-    public float DisplayPercentageChange(int id)
+    // Calculates the percentage Change of the stock of id
+    // using previous value and current value
+    public float PercentageChange(int id)
     {
         return (List_Stonks[id].CurrentValue / List_Stonks[id].PreviousValue - 1) * 100f;
+    }
+
+    // Display the Name, percentageChange, Price, and shares the player has in that stock.
+    // return a string with all the information.
+    // take the id of the stock as the input.
+    public string DisplayStock(int id)
+    {
+        string result;
+        result = List_Stonks[id].Name + "\n" + PercentageChange(id) + "\nPrice: " + List_Stonks[id].CurrentValue + "\nShares: " + List_Stonks[id].Shares;
+        return result;
     }
 
     /* This function indicates progression of one year for Stocks.   
@@ -123,6 +140,7 @@ public class Stocks : Investment
     //              out float yearValue, in RateComponents components)
     public void Progression()
     {
+        year++;
         // goes through all the stocks, saves their currentValue, then update their value using formula.
         for (int i = 0; i < 4; i++)
         {
@@ -133,7 +151,6 @@ public class Stocks : Investment
             // This rate will subject current price of stock to change
             List_Stonks[i].CurrentValue = Mathf.RoundToInt(ss.GetRateAtYear(year, List_Rates[i]));
         }
-        year++;
     }
 }
 
