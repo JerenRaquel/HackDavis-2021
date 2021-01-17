@@ -90,6 +90,27 @@ public class Stocks : Investment
         // return the amount of money added to checkings
         return result;
     }
+
+    /* This function indicates progression of one year for Stocks.   
+       After each year, current price of shares from stock companies
+       are subjected to change. This function, therefore, updates
+       the value of the shares the user invested as well as current prices. 
+    */
+    // Functions from StonkSystem
+    // public float GetRateAtYear(int year, in RateComponents components)
+    // public float GetRateAsPercentageAtYear(int year, float prevYearValue,
+    //              out float yearValue, in RateComponents components)
+    public void Progression () 
+    {
+      foreach (Stock stock in List_Stonks)
+      {
+        rate = ss.
+        if (year != 0)
+        {
+          cd.Year--;
+          cd.Value = Mathf.RoundToInt(cd.Value + cd.Value * (1 + cd.Rate));
+      }
+    }
 }
 
 
