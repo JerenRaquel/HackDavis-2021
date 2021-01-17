@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 // Stock class for each individual stock, Each Stock object will have # of shares, current value of a stock, and its name.

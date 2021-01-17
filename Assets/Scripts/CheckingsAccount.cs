@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 public class CheckingsAccount : Investment
 {
     int income;
@@ -14,7 +17,7 @@ public class CheckingsAccount : Investment
     {
         //if (this.totalValue < amount)
         //{
-            // pops to another function (not coded yet) which has to purpose to allow the user to divert other funds to solve this error.
+        // pops to another function (not coded yet) which has to purpose to allow the user to divert other funds to solve this error.
         //    return -1;
         //}
         this.totalValue -= amount;
