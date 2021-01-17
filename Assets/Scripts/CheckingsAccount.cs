@@ -1,7 +1,6 @@
 public class CheckingsAccount : Investment
 {
 
-<<<<<<< HEAD
     int income;
     int expense = 0;
 
@@ -20,28 +19,6 @@ public class CheckingsAccount : Investment
         }
         this.totalValue -= amount;
         return 1;
-=======
-  int income;
-  int expense = 0;
-
-  public CheckingsAccount(int income)
-  {
-    this.income = income;
-  }
-
-
-  // when output -1, it means that the CheckingAccount has no money and the player needs to reallocate money to pay.
-  public int RemoveFunds(int amount)
-  {
-    if (this.TotalFunds < amount)
-    {
-      //
-      return -1;
-    }
-    this.totalValue -= amount;
-    return 1;
-  }
->>>>>>> b0883d4b1fad6ba006f3dd1356c4ff661a0c3f6f
 
     }
 
