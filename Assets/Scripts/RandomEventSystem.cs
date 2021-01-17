@@ -13,31 +13,34 @@ public class EventReturnVal
 {
   private float amount;
   private string msg;
+  private string title;
 
-  public EventReturnVal(float amount, string msg)
+  public EventReturnVal(float amount, string msg, string title)
   {
     this.amount = amount;
     this.msg = msg;
+    this.title = title;
   }
 
   public float Amount => this.amount;
   public string Message => this.msg;
+  public string Title => this.title;
 }
 
 public class RandomEventSystem : MonoBehaviour
 {
   public EventData[] events;
 
-  public EventReturnVal GetRandomEventAmount(EventData rngEvent = null, bool dive = false)
+  public EventReturnVal GetRandomEvent(EventData rngEvent = null, bool recurse = false)
   {
     // Base case
-    if (rngEvent == null && dive)
-      return new EventReturnVal(0, "");
+    if (rngEvent == null && recurse)
+      return new EventReturnVal(0, "", "");
 
     // Check if event is played
     int chance = Random.Range(0, 1);
     if (chance == 0)
-      return new EventReturnVal(0, "");
+      return new EventReturnVal(0, "", "");
 
     // Get event
     EventData ree;
@@ -49,15 +52,15 @@ public class RandomEventSystem : MonoBehaviour
     // Check for nested event
     if (ree != null)
     {
-      EventReturnVal temp = GetRandomEventAmount(ree.nestedEvent);
+      EventReturnVal temp = GetRandomEvent(ree.nestedEvent, true);
       if (ree.nestedEvent != null)
-        return new EventReturnVal(GetAmount(in ree.amounts) + temp.Amount, "-" + ree.description + "\n" + temp.Message);
+        return new EventReturnVal(GetAmount(in ree.amounts) + temp.Amount, "-" + ree.description + "\n" + temp.Message, ree.name);
       else
-        return new EventReturnVal(GetAmount(in ree.amounts), "-" + ree.description);
+        return new EventReturnVal(GetAmount(in ree.amounts), "-" + ree.description, ree.name);
       // return GetAmount(in ree.amounts) + GetRandomEventAmount(ree.nestedEvent).amount;
     }
 
-    return new EventReturnVal(0, "");
+    return new EventReturnVal(0, "", "");
   }
 
   private float GetAmount(in ChanceAmount[] amounts)
