@@ -5,7 +5,8 @@ using UnityEngine;
 public class SavingsAccount : Investment
 {
     // the variables SavingAccount will use.
-    private float[] interestRates;
+    public float[] interestRates = { 1, 2, 4, 5, 6, 7, 8, 9, 10 };
+
 
     // constructor for SavingsAccount object.
     public SavingsAccount(float[] interestRates, int year)
