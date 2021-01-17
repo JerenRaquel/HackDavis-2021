@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class CD
 {
-    float value;
+    int value;
     float rate;
     int year;
 
@@ -14,7 +14,7 @@ public class CD
         this.year = year;
     }
 
-    public float Value { get { return this.value; } set { this.value = value; } }
+    public int Value { get { return this.value; } set { this.value = value; } }
     public float Rate => this.rate;
     public int Year { get { return this.year; } set { this.year = value; } }
 }
