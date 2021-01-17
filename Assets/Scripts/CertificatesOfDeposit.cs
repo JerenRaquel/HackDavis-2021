@@ -36,7 +36,7 @@ public class CertificatesOfDeposit : Investment
   public void Deposit(int amount, int yearOption)
   {
     CD cd_item = new CD(amount, rate, yearOption);
-    List_CDs.Add(item);
+    List_CDs.Add(cd_item);
   }
 
   public int Collect(int id)
