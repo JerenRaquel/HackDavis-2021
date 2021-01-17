@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daba2239007656a4489b8b2c9862aed7, type: 3}
+  m_Name: TnT
+  m_EditorClassIdentifier: 
+  name: Oh Creeper, Aww Man
+  description: "Sssssss\u2026 BOOM! A creeper spawned and blew up inside your home
+    while you were sleeping. Well, the damages aren\u2019t enough for home insurance
+    to cover it. You need to pay $20,000 for repairs."
+  amounts:
+  - amount: -20000
+    chance: 100
+  nestedEvent: {fileID: 0}
+  canEndGame: 0
+  gameOverChance: 0

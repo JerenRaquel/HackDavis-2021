@@ -8,6 +8,8 @@ public class EventData : ScriptableObject
   public string name = "No Name";
   [TextArea(10, 15)]
   public string description = "";
-  public float amount = 0;
+  public ChanceAmount[] amounts;
   public EventData nestedEvent;
+  public bool canEndGame = false;
+  public float gameOverChance = 0f;
 }

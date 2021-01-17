@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class RandomEvent
+public class ChanceAmount
 {
-
+  public float amount;
+  public float chance;
 }
 
 public class RandomEventSystem : MonoBehaviour
@@ -28,8 +29,27 @@ public class RandomEventSystem : MonoBehaviour
 
     // Check for nested event
     if (ree != null)
-      return ree.amount + GetRandomEventAmount(ree.nestedEvent);
+      return GetAmount(in ree.amounts) + GetRandomEventAmount(ree.nestedEvent);
 
     return 0;
+  }
+
+  private float GetAmount(in ChanceAmount[] amounts)
+  {
+    if (amounts.Length == 1)
+      return amounts[0].amount;
+
+    int rng = Random.Range(1, 101);
+    float result = 0f;
+    float maxChance = 0f;
+    for (int i = 0; i < amounts.Length; i++)
+    {
+      if (amounts[i].chance >= maxChance && amounts[i].chance >= rng)
+      {
+        result = amounts[i].amount;
+        maxChance = amounts[i].chance;
+      }
+    }
+    return result;
   }
 }
