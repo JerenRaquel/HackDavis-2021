@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class EventReportBox
 {
+  public GameObject panel;
+  public EventReportMenu menu;
   public TMPro.TMP_Text titleBox;
   public TMPro.TMP_Text descriptionBox;
 }

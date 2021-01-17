@@ -26,10 +26,11 @@ public class GameController : MonoBehaviour
   private bool isPaused = false;
   private bool yearProcessing = false;
   private int year = 0;
+  private float owedMoney = 0f;
 
   private void Update()
   {
-    if (!yearProcessing)
+    if (!yearProcessing && !isPaused)
     {
       yearProcessing = true;
       SwitchState(GAME_STATES.NEW_YEAR);
@@ -45,10 +46,15 @@ public class GameController : MonoBehaviour
         {
           EventReturnVal result = randomEventSystem.GetRandomEvent();
           // Update assets base on result
+          if (result.Amount < 0)
+            this.owedMoney = result.Amount;
+          // Check if can pay
+          this.eventReportBox.panel.SetActive(true);
           this.eventReportBox.titleBox.text = result.Title;
           this.eventReportBox.descriptionBox.text = result.Message;
           this.year++;
           this.yearProcessing = false;
+          SwitchState(GAME_STATES.PAUSE);
         });
         break;
       case GAME_STATES.SAVE_AND_QUIT:
@@ -66,6 +72,27 @@ public class GameController : MonoBehaviour
     }
   }
 
+  public void RemoveFromChecking()
+  {
+    owedMoney = 0f;
+  }
+
+  public void RemoveFromSavings()
+  {
+    owedMoney = 0f;
+  }
+
+  public bool CheckForAvailable(float amount, bool checkChecking = true)
+  {
+    if (checkChecking)
+    {
+      return true;
+    }
+    else
+    {
+      return true;
+    }
+  }
 
   public bool IsGameActive => this.isPaused;
 }
