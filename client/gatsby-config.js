@@ -1,6 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: "client",
+    title: "Investi Game",
+    description: "Learn Investment",
+    author: "Segmentation Fault",
+    siteUrl: "https://investi.space"
   },
   plugins: [
     "gatsby-plugin-sharp",
@@ -8,6 +11,14 @@ module.exports = {
     "gatsby-plugin-sitemap",
     "gatsby-plugin-offline",
     "gatsby-transformer-sharp",
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {
