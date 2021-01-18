@@ -45,5 +45,7 @@ public class SceneHandler : MonoBehaviour
       return;
 
     SceneManager.LoadSceneAsync((int)scene, LoadSceneMode.Additive);
+    // if (scene == SCENES.GAME)
+    //   GameController.instance.SwitchState(GameController.GAME_STATES.NEW_YEAR);
   }
 }

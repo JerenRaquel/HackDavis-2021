@@ -107,7 +107,8 @@ namespace ContainerBars
         this.totalValue *= -1;
       this.isComplete = false;
       this.isInitialized = true;
-      this.background.color = this.backgroundColor;
+      if (background != null)
+        this.background.color = this.backgroundColor;
       SetColorBars();
       this.isPaused = false;
     }

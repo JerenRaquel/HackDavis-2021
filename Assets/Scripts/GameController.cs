@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour
   {
     if (!yearProcessing && !isPaused)
     {
+      // isPaused = false;
       yearProcessing = true;
       if (year == 50)
         SwitchState(GAME_STATES.SAVE_AND_QUIT);
