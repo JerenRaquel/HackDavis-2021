@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SavingsAccount : Investment
 {
+    public InvestmentModule investmentModule;
+
     // the variables SavingAccount will use.
     public float[] interestRates;
 
@@ -21,6 +23,16 @@ public class SavingsAccount : Investment
         string result;
         result = "Amount: " + this.totalValue + "\nInterest rate: " + this.rate;
         return result;
+    }
+
+    public int DisplayAmount()
+    {
+        return this.totalValue;
+    }
+
+    public float DisplayRate()
+    {
+        return this.rate;
     }
 
     // Progression should be called everytime the global game timer refreshes.

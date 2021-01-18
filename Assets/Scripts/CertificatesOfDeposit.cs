@@ -21,25 +21,26 @@ public class CD
     }
 
     public int Value { get { return this.value; } set { this.value = value; } }
-    public float Rate => this.rate;
+    public float Rate { get { return this.rate; } set { this.rate = value; } }
     public int Year { get { return this.year; } set { this.year = value; } }
 }
 
 public class CertificatesOfDeposit : Investment
 {
-    // declares the list which holds all the CD objects
-    List<CD> List_CDs;
+
+    public InvestmentModule investmentModule;
+
     // List of imported interestRates
     float[] interestRates;
     // The constructor for the CertificatesOfDeposits feature,
     // Meant to be called at the beginning when the game starts
     // input: A float array of interest rates, and the current year
-
+    CD cd;
     private void Start()
     {
         this.year = 0;
         this.rate = interestRates[year];
-        this.List_CDs = new List<CD>();
+        cd = new CD(0, this.rate, this.year);
     }
 
     // When the player chooses to buy a CD,
@@ -50,8 +51,15 @@ public class CertificatesOfDeposit : Investment
     // Input: the amount the player wants to deposit, how many years the player wants till expiration
     public void Deposit(int amount, int yearOption)
     {
-        CD cd_item = new CD(amount, rate, yearOption);
-        List_CDs.Add(cd_item);
+        if (cd.Year == 0)
+        {
+            cd.Value += amount;
+            cd.Rate = interestRates[year];
+            cd.Year = yearOption;
+        }
+        else
+            return;
+
     }
 
     // This function is called when the user wants to collect their CDs.
@@ -59,7 +67,7 @@ public class CertificatesOfDeposit : Investment
     // The CD will be collected and depending on the year might result in a penalty.
     // input: the id of the CD collected
     // output: the total amount of money collected from that CD
-    public int Collect(int id)
+    public int Collect()
     {
 
         // the error handling should not be needed
@@ -73,23 +81,33 @@ public class CertificatesOfDeposit : Investment
 
         // if the CD has not reached maturity, collecting it will result in a penalty amount
         int collect_value;
-        if (List_CDs[id].Year != 0)
-            collect_value = Mathf.RoundToInt(.9f * (float)List_CDs[id].Value);
+        if (cd.Year != 0)
+            collect_value = Mathf.RoundToInt(.9f * (float)cd.Value);
         else
-            collect_value = List_CDs[id].Value;
+            collect_value = cd.Value;
+
+        // resetting cd
+        cd.Value = 0;
+        cd.Rate = 0;
+        cd.Year = 0;
 
         // remove the collected CD from the list of CDs stored
-        List_CDs.RemoveAt(id);
         return collect_value;
     }
 
-    // DisplayCD() would return a string which displays all the important information of the CD
-    // Can use DisplayCD() to get the data needed to put on the Collect buttons
-    public string DisplayCD(int id)
+    public int DisplayCDValue()
     {
-        string result = "$" + List_CDs[id].Value + "\nAPY Rate: " + List_CDs[id].Rate + "\nYears till Maturity: " + List_CDs[id].Year + " Years";
-        return result;
+        return cd.Value;
+    }
 
+    public float DisplayCDRate()
+    {
+        return cd.Rate;
+    }
+
+    public int DisplayExpYear()
+    {
+        return cd.Year;
     }
 
     // Called everytime the global timer refreshes with all the other functions
@@ -101,15 +119,11 @@ public class CertificatesOfDeposit : Investment
         // update the year counter to match with system year
         this.year++;
 
-        // update the value of each CD for one year
-        foreach (CD cd in List_CDs)
+        // if the CD is not matured, increase its value by one year with simple interest
+        if (cd.Year != 0)
         {
-            // if the CD is not matured, increase its value by one year with simple interest
-            if (cd.Year != 0)
-            {
-                cd.Year--;
-                cd.Value = Mathf.RoundToInt(cd.Value + cd.Value * cd.Rate);
-            }
+            cd.Year--;
+            cd.Value = Mathf.RoundToInt(cd.Value + cd.Value * cd.Rate);
         }
         // update the interest rate for new CDs yet to be built
         this.rate = interestRates[year];

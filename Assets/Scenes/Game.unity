@@ -1430,7 +1430,7 @@ GameObject:
   - component: {fileID: 286528955}
   - component: {fileID: 286528959}
   m_Layer: 5
-  m_Name: Module
+  m_Name: CheckingsAccount Module
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1680,7 +1680,7 @@ GameObject:
   - component: {fileID: 393669153}
   - component: {fileID: 393669152}
   m_Layer: 5
-  m_Name: Module (1)
+  m_Name: SavingsAccount Module
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3570,7 +3570,7 @@ GameObject:
   - component: {fileID: 837249110}
   - component: {fileID: 837249109}
   m_Layer: 5
-  m_Name: Module (3)
+  m_Name: Stock Module
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5747,7 +5747,7 @@ GameObject:
   - component: {fileID: 1304500106}
   - component: {fileID: 1304500105}
   m_Layer: 5
-  m_Name: Module (2)
+  m_Name: CD Module
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6995,6 +6995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bb9a8df6caccd45afa72bcb6d63735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  investmentModule: {fileID: 837249109}
   rateComponents0:
     baseRate: 0
     luckyPercentage: 0
@@ -7015,6 +7016,7 @@ MonoBehaviour:
     luckyPercentage: 0
     startingRate: 0
     fluxAmplitued: 0
+  initialValues: 10000000160000000600000012000000
 --- !u!114 &1550613054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7027,6 +7029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d9cc7fcd3c83f4ea56eb6446395eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  investmentModule: {fileID: 393669152}
   interestRates: []
 --- !u!114 &1550613055
 MonoBehaviour:
@@ -7040,7 +7043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52062ec74a86dfa449e3d1a027ace17a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  im: {fileID: 286528959}
+  investmentModule: {fileID: 286528959}
 --- !u!114 &1550613056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7053,6 +7056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d2d285bcc3e3044fad4a0effd216d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  investmentModule: {fileID: 1304500105}
 --- !u!4 &1550613057
 Transform:
   m_ObjectHideFlags: 0

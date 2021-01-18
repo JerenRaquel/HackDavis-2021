@@ -35,89 +35,87 @@ public class Stocks : Investment
 
     }*/
 
+    public InvestmentModule investmentModule;
+
+
     // StonkSystem imported, has functions to get rate of change of a stock for progression
     StonkSystem ss = new StonkSystem();
 
     // Init of all the rateComponents for each individual company / stock
-    public RateComponents rateComponents0 = new RateComponents(3f, 70f, 121f, 80f);
-    public RateComponents rateComponents1 = new RateComponents(7f, 70f, 44f, 80f);
-    public RateComponents rateComponents2 = new RateComponents(1f, 55f, 353f, 30f);
-    public RateComponents rateComponents3 = new RateComponents(3f, 50f, 143f, 35f);
+    public RateComponents rateComponents = new RateComponents(3f, 70f, 121f, 80f);
+    //public RateComponents rateComponents1 = new RateComponents(7f, 70f, 44f, 80f);
+    //public RateComponents rateComponents2 = new RateComponents(1f, 55f, 353f, 30f);
+    //public RateComponents rateComponents3 = new RateComponents(3f, 50f, 143f, 35f);
 
     // list of all 4 stock rates used in calculation to represent different companies
-    RateComponents[] List_Rates = new RateComponents[4];
+    //RateComponents[] List_Rates = new RateComponents[4];
 
-    [SerializeField] private int[] initialValues = { 16, 22, 6, 18 };
-
+    //[SerializeField] private int[] initialValues = { 16, 22, 6, 18 };
+    [SerializeField] private int initialValue;
 
     // list of all 4 stock companies
-    Stock[] List_Stonks = new Stock[4];
+    //Stock[] List_Stonks = new Stock[4];
+    Stock stock;
 
+    string stock_name;
     private void Start()
     {
         // initialize all 4 stock objects and give them names
-        for (int i = 0; i < 4; i++)
-        {
-            List_Stonks[i] = new Stock(initialValues[i]);
-            List_Stonks[i].PreviousValue = List_Stonks[i].CurrentValue;
-        }
+        //for (int i = 0; i < 4; i++)
+        //{
+        //    List_Stonks[i] = new Stock(initialValues[i]);
+        //    List_Stonks[i].PreviousValue = List_Stonks[i].CurrentValue;
+        //}
+        stock.CurrentValue = initialValue;
+        stock.PreviousValue = stock.CurrentValue;
 
         // names
-        List_Stonks[0].Name = "GOGA";
-        List_Stonks[1].Name = "TUSLA";
-        List_Stonks[2].Name = "UWUZON";
-        List_Stonks[3].Name = "WCDONALDS";
-
-        // initializing all 4 rates with different values to represent their respective stock
-        List_Rates[0] = rateComponents0;
-        List_Rates[1] = rateComponents1;
-        List_Rates[2] = rateComponents2;
-        List_Rates[3] = rateComponents3;
+        stock.Name = stock_name;
     }
 
     // input: total amount in checkings account, ID of that stock
     // output: max # of shares of that stock the player can buy
     // used by outside function to calculate the Max shares of that stock that can be bought; this is for display purposes
-    public int MaxBuyNotification(int maxMoney, int id)
+    public int MaxBuyNotification(int maxMoney)
     {
-        return Mathf.RoundToInt(maxMoney / List_Stonks[id].CurrentValue);
+        return Mathf.RoundToInt(maxMoney / stock.CurrentValue);
     }
 
     // input: # of shares, ID of the stock, and total amount in checkings account
     // Buying a stock, occurs when the buy button is pressed on a specific stock, the id can be used to identify which stock
     // If the # of shares of stock inputed is more than what the player can get, then it would just buy all the stocks they get buy
-    public void Buy(int shares, int id, int maxMoney)
+    public void Buy(int shares, int maxMoney)
     {
         // checks if the total value of the shares demanded is more than the player can handle
-        if (shares * List_Stonks[id].CurrentValue > maxMoney)
+        if (shares * stock.CurrentValue > maxMoney)
         {
-            shares = maxMoney / List_Stonks[id].CurrentValue;
+            shares = maxMoney / stock.CurrentValue;
         }
-        List_Stonks[id].Shares += shares;
+        stock.Shares += shares;
     }
 
     // Returns the name of the stock of id
-    public string GetName(int id)
+    public string GetName()
     {
-        return List_Stonks[id].Name;
+        return stock.Name;
     }
 
     // input: # of shares, ID of the stock
     // output: Amount of money adding to Checkings
     // Selling a stock, occurs when the sell button is pressed on a specific stock, the id can be used to identify which stock
     // if the # of shares of stock inputed is more than what the player can sell. then it would just sell all of that stock they have
-    public int Sell(int shares, int id)
+    public int Sell(int shares)
     {
         int result = 0;
-        if (shares > List_Stonks[id].Shares)
+        if (shares > stock.Shares)
         {
-            result = List_Stonks[id].Shares * List_Stonks[id].CurrentValue;
-            List_Stonks[id].Shares = 0;
+            result = stock.Shares * stock.CurrentValue;
+            stock.Shares = 0;
         }
         else
         {
-            result = shares * List_Stonks[id].CurrentValue;
-            List_Stonks[id].Shares -= shares;
+            result = shares * stock.CurrentValue;
+            stock.Shares -= shares;
         }
 
         return result;
@@ -125,19 +123,19 @@ public class Stocks : Investment
 
     // Calculates the percentage Change of the stock of id
     // using previous value and current value
-    public float PercentageChange(int id)
+    public float PercentageChange()
     {
-        return (List_Stonks[id].CurrentValue / List_Stonks[id].PreviousValue - 1) * 100f;
+        return (stock.CurrentValue / stock.PreviousValue - 1) * 100f;
     }
 
-    // Display the Name, percentageChange, Price, and shares the player has in that stock.
-    // return a string with all the information.
-    // take the id of the stock as the input.
-    public string DisplayStock(int id)
+    public int DisplayStockShares()
     {
-        string result;
-        result = List_Stonks[id].Name + "\n" + PercentageChange(id) + "\nPrice: " + List_Stonks[id].CurrentValue + "\nShares: " + List_Stonks[id].Shares;
-        return result;
+        return stock.Shares;
+    }
+
+    public int DisplayStockCurrentValue()
+    {
+        return stock.CurrentValue;
     }
 
     /* This function indicates progression of one year for Stocks.   
@@ -155,16 +153,13 @@ public class Stocks : Investment
             return;
 
         year++;
-        // goes through all the stocks, saves their currentValue, then update their value using formula.
-        for (int i = 0; i < 4; i++)
-        {
-            // saves the CurrentValue to PreviousValue
-            List_Stonks[i].PreviousValue = List_Stonks[i].CurrentValue;
 
-            // Gets the rate for the current year
-            // This rate will subject current price of stock to change
-            List_Stonks[i].CurrentValue = Mathf.RoundToInt(ss.GetRateAtYear(year, List_Rates[i]));
-        }
+        // saves the CurrentValue to PreviousValue
+        stock.PreviousValue = stock.CurrentValue;
+
+        // Gets the rate for the current year
+        // This rate will subject current price of stock to change
+        stock.CurrentValue = Mathf.RoundToInt(ss.GetRateAtYear(year, rateComponents));
     }
 }
 
