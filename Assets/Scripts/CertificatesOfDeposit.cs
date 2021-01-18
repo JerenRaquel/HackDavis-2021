@@ -8,19 +8,19 @@ using UnityEngine;
 */
 public class CD
 {
-    int value;
+    float value;
     float rate;
     int year;
 
     // each CD will have a principal value, an interest rate, and a maturation year
-    public CD(int amount, float rate, int year)
+    public CD(float amount, float rate, int year)
     {
         this.value = amount;
         this.rate = rate;
         this.year = year;
     }
 
-    public int Value { get { return this.value; } set { this.value = value; } }
+    public float Value { get { return this.value; } set { this.value = value; } }
     public float Rate { get { return this.rate; } set { this.rate = value; } }
     public int Year { get { return this.year; } set { this.year = value; } }
 }
@@ -29,6 +29,8 @@ public class CertificatesOfDeposit : Investment
 {
 
     public InvestmentModule investmentModule;
+
+    public CheckingsAccount checkingsAccount;
 
     // List of imported interestRates
     float[] interestRates;
@@ -41,15 +43,38 @@ public class CertificatesOfDeposit : Investment
         this.year = 0;
         this.rate = interestRates[year];
         cd = new CD(0, this.rate, this.year);
+        investmentModule.Initailize("Certificates Of Deposits", 0, "Deposit", "Collect", Add_Pointer, Subtract_Pointer);
     }
 
+    private void Add_Pointer(float userInputValue)
+    {
+
+        if (checkingsAccount.DisplayAmount() < userInputValue)
+        {
+            Deposit(checkingsAccount.DisplayAmount(), 10);
+            checkingsAccount.Withdraw(checkingsAccount.DisplayAmount());
+        }
+        else
+        {
+            Deposit(userInputValue, 10);
+            checkingsAccount.Withdraw(userInputValue);
+        }
+
+    }
+
+    private void Subtract_Pointer(float userInputValue)
+    {
+
+        checkingsAccount.Withdraw(Collect());
+
+    }
     // When the player chooses to buy a CD,
     // they will input an amount, click on the the different yearOption buttons, then click on buy.
     // That will use this Deposit().
     // Deposit() creates a new CD object which has the amount input, the yearOption, and the current year rate
     // and stores it.
     // Input: the amount the player wants to deposit, how many years the player wants till expiration
-    public void Deposit(int amount, int yearOption)
+    public void Deposit(float amount, int yearOption)
     {
         if (cd.Year == 0)
         {
@@ -67,7 +92,7 @@ public class CertificatesOfDeposit : Investment
     // The CD will be collected and depending on the year might result in a penalty.
     // input: the id of the CD collected
     // output: the total amount of money collected from that CD
-    public int Collect()
+    public float Collect()
     {
 
         // the error handling should not be needed
@@ -80,7 +105,7 @@ public class CertificatesOfDeposit : Investment
         //}
 
         // if the CD has not reached maturity, collecting it will result in a penalty amount
-        int collect_value;
+        float collect_value;
         if (cd.Year != 0)
             collect_value = Mathf.RoundToInt(.9f * (float)cd.Value);
         else
@@ -95,7 +120,7 @@ public class CertificatesOfDeposit : Investment
         return collect_value;
     }
 
-    public int DisplayCDValue()
+    public float DisplayCDValue()
     {
         return cd.Value;
     }
@@ -105,7 +130,7 @@ public class CertificatesOfDeposit : Investment
         return cd.Rate;
     }
 
-    public int DisplayExpYear()
+    public float DisplayExpYear()
     {
         return cd.Year;
     }
@@ -127,6 +152,8 @@ public class CertificatesOfDeposit : Investment
         }
         // update the interest rate for new CDs yet to be built
         this.rate = interestRates[year];
+
+        investmentModule.UpdateValue(DisplayCDValue());
     }
 
 }
