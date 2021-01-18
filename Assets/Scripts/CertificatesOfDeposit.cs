@@ -33,7 +33,7 @@ public class CertificatesOfDeposit : Investment
     public CheckingsAccount checkingsAccount;
 
     // List of imported interestRates
-    float[] interestRates;
+
     // The constructor for the CertificatesOfDeposits feature,
     // Meant to be called at the beginning when the game starts
     // input: A float array of interest rates, and the current year
@@ -41,7 +41,7 @@ public class CertificatesOfDeposit : Investment
     private void Start()
     {
         this.year = 0;
-        this.rate = interestRates[year];
+        this.rate = .14f;
         cd = new CD(0, this.rate, this.year);
         investmentModule.Initailize("Certificates Of Deposits", 0, "Deposit", "Collect", Add_Pointer, Subtract_Pointer);
     }
@@ -79,7 +79,7 @@ public class CertificatesOfDeposit : Investment
         if (cd.Year == 0)
         {
             cd.Value += amount;
-            cd.Rate = interestRates[year];
+            cd.Rate = rate;
             cd.Year = yearOption;
         }
         else
@@ -151,7 +151,7 @@ public class CertificatesOfDeposit : Investment
             cd.Value = Mathf.RoundToInt(cd.Value + cd.Value * cd.Rate);
         }
         // update the interest rate for new CDs yet to be built
-        this.rate = interestRates[year];
+        this.rate = this.rate - Random.Range(0f, 0.0028f); ;
 
         investmentModule.UpdateValue(DisplayCDValue());
     }

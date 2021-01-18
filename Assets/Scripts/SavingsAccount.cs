@@ -8,13 +8,12 @@ public class SavingsAccount : Investment
     public CheckingsAccount checkingsAccount;
 
     // the variables SavingAccount will use.
-    public float[] interestRates;
 
     private void Start()
     {
         this.totalValue = 0;
         this.year = 0;
-        this.rate = interestRates[year];
+        this.rate = .14f;
         investmentModule.Initailize("Saving's Piggy", 0, "Deposit", "Withdraw", Add_Pointer, Subtract_Pointer);
     }
     public void Add_Pointer(float userInputValue)
@@ -68,7 +67,7 @@ public class SavingsAccount : Investment
 
         totalValue = totalValue + totalValue * rate;
         year++;
-        this.rate = interestRates[year];
+        this.rate = this.rate - Random.Range(0f, 0.0018f);
         investmentModule.UpdateValue(DisplayAmount());
     }
 
