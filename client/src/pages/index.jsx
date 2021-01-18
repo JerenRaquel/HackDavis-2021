@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import unityProgress from "../../static/v1.1/TemplateData/UnityProgress";
-import "../../static/v1.1/TemplateData/style.css";
+import unityProgress from "../../static/v1.0/TemplateData/UnityProgress";
+import "../../static/v1.0/TemplateData/style.css";
 
 const HomePage = ({ ...props }) => {
   const unityInstance = useRef(null);
@@ -8,7 +8,7 @@ const HomePage = ({ ...props }) => {
   useEffect(() => {
     unityInstance.current = window.UnityLoader.instantiate(
       "unityContainer",
-      "v1.1/Build/Builds.json",
+      "v1.0/Build/Builds.json",
       { onProgress: unityProgress }
     );
   }, []);
@@ -22,7 +22,7 @@ const HomePage = ({ ...props }) => {
           className="fullscreen"
           onClick={() => unityInstance.current.SetFullscreen(1)}
         />
-        <div className="title">Pumpkin Chad: The Haunting v1.1</div>
+        <div className="title">Stonks by Segmentation Fault</div>
       </div>
     </div>
   );
