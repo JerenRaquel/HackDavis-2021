@@ -62,8 +62,6 @@ public class CheckingsAccount : Investment
 
     public void Progression()
     {
-        if (!(GameController.instance.IsGameActive))
-            return;
 
         this.totalValue += income;
 

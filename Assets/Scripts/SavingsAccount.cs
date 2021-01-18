@@ -62,9 +62,6 @@ public class SavingsAccount : Investment
     // update the interest rate
     public void Progression()
     {
-        if (!(GameController.instance.IsGameActive))
-            return;
-
         totalValue = totalValue + totalValue * rate;
         year++;
         this.rate = this.rate - Random.Range(0f, 0.0018f);

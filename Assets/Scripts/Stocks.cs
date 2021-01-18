@@ -181,8 +181,6 @@ public class Stocks : Investment
     //              out float yearValue, in RateComponents components)
     public void Progression()
     {
-        if (!(GameController.instance.IsGameActive))
-            return;
 
         year++;
 

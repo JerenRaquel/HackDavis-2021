@@ -138,9 +138,6 @@ public class CertificatesOfDeposit : Investment
     // Called everytime the global timer refreshes with all the other functions
     public void Progression()
     {
-        if (!(GameController.instance.IsGameActive))
-            return;
-
         // update the year counter to match with system year
         this.year++;
 
