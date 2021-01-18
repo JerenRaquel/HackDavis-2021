@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
   public ContainerBars.ProgressSystem yearProgressBar;
   public RandomEventSystem randomEventSystem;
   public EventReportBox eventReportBox;
+  public CheckingsAccount checkingsAccount;
+  public SavingsAccount savingsAccount;
 
   private bool isPaused = false;
   private bool yearProcessing = false;
@@ -51,12 +53,15 @@ public class GameController : MonoBehaviour
           EventReturnVal result = randomEventSystem.GetRandomEvent();
           if (result.EventFound)
           {
-            // Update assets base on result
             if (result.Amount < 0)
             {
               this.owedMoney = result.Amount;
               this.eventReportBox.menu.DisablePayment(EventReportMenu.PAYMENT_TYPE.RECIEVE);
               // Check if can pay
+              if (!CheckForAvailable(owedMoney))
+                this.eventReportBox.menu.DisablePayment(EventReportMenu.PAYMENT_TYPE.CHECKING);
+              if (!CheckForAvailable(owedMoney, false))
+                this.eventReportBox.menu.DisablePayment(EventReportMenu.PAYMENT_TYPE.SAVINGS);
             }
             else if (result.Amount > 0)
             {
@@ -95,17 +100,19 @@ public class GameController : MonoBehaviour
 
   public void RemoveFromChecking()
   {
+    checkingsAccount.Withdraw(owedMoney);
     owedMoney = 0f;
   }
 
   public void RemoveFromSavings()
   {
+    savingsAccount.Withdraw(owedMoney);
     owedMoney = 0f;
   }
 
   public void AddFunds()
   {
-    // Add funds
+    checkingsAccount.Deposit(gottenMoney);
     gottenMoney = 0f;
   }
 
@@ -113,11 +120,17 @@ public class GameController : MonoBehaviour
   {
     if (checkChecking)
     {
-      return true;
+      if (checkingsAccount.DisplayAmount() >= amount)
+        return true;
+      else
+        return false;
     }
     else
     {
-      return true;
+      if (savingsAccount.DisplayAmount() >= amount)
+        return true;
+      else
+        return false;
     }
   }
 

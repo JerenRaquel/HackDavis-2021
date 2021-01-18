@@ -587,7 +587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &113294069
 RectTransform:
   m_ObjectHideFlags: 0
@@ -942,6 +942,8 @@ MonoBehaviour:
     menu: {fileID: 188081232}
     titleBox: {fileID: 1394853920}
     descriptionBox: {fileID: 2118105240}
+  checkingsAccount: {fileID: 0}
+  savingsAccount: {fileID: 0}
 --- !u!114 &188081232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1528,11 +1530,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba4ffcb77456dc4c8716da04b3f0be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: {fileID: 0}
-  amount: {fileID: 0}
-  addName: {fileID: 0}
-  removeName: {fileID: 0}
-  inputField: {fileID: 0}
+  title: {fileID: 635053822}
+  amount: {fileID: 1871532758}
+  addName: {fileID: 1202438168}
+  removeName: {fileID: 613387052}
+  inputField: {fileID: 1172399350}
 --- !u!1 &383701523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1698,11 +1700,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba4ffcb77456dc4c8716da04b3f0be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: {fileID: 0}
-  amount: {fileID: 0}
-  addName: {fileID: 0}
-  removeName: {fileID: 0}
-  inputField: {fileID: 0}
+  title: {fileID: 728815395}
+  amount: {fileID: 552819764}
+  addName: {fileID: 817764253}
+  removeName: {fileID: 440173671}
+  inputField: {fileID: 1645254330}
 --- !u!114 &393669153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3588,11 +3590,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba4ffcb77456dc4c8716da04b3f0be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: {fileID: 0}
-  amount: {fileID: 0}
-  addName: {fileID: 0}
-  removeName: {fileID: 0}
-  inputField: {fileID: 0}
+  title: {fileID: 1912473195}
+  amount: {fileID: 40570406}
+  addName: {fileID: 98876708}
+  removeName: {fileID: 260608454}
+  inputField: {fileID: 1445301472}
 --- !u!114 &837249110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3821,7 +3823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &889575550
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5355,7 +5357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1172399349
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5765,11 +5767,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba4ffcb77456dc4c8716da04b3f0be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: {fileID: 0}
-  amount: {fileID: 0}
-  addName: {fileID: 0}
-  removeName: {fileID: 0}
-  inputField: {fileID: 0}
+  title: {fileID: 659168912}
+  amount: {fileID: 1982254568}
+  addName: {fileID: 170352766}
+  removeName: {fileID: 383701525}
+  inputField: {fileID: 967828693}
 --- !u!114 &1304500106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6976,6 +6978,7 @@ GameObject:
   - component: {fileID: 1550613055}
   - component: {fileID: 1550613054}
   - component: {fileID: 1550613053}
+  - component: {fileID: 1550613058}
   m_Layer: 0
   m_Name: Investments
   m_TagString: Untagged
@@ -6996,27 +6999,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   investmentModule: {fileID: 837249109}
-  rateComponents0:
-    baseRate: 0
-    luckyPercentage: 0
-    startingRate: 0
-    fluxAmplitued: 0
-  rateComponents1:
-    baseRate: 0
-    luckyPercentage: 0
-    startingRate: 0
-    fluxAmplitued: 0
-  rateComponents2:
-    baseRate: 0
-    luckyPercentage: 0
-    startingRate: 0
-    fluxAmplitued: 0
-  rateComponents3:
-    baseRate: 0
-    luckyPercentage: 0
-    startingRate: 0
-    fluxAmplitued: 0
-  initialValues: 10000000160000000600000012000000
+  checkingsAccount: {fileID: 1550613055}
+  rateComponents:
+    baseRate: 3
+    luckyPercentage: 70
+    startingRate: 121
+    fluxAmplitued: 80
+  initialValue: 0
 --- !u!114 &1550613054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7030,6 +7019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   investmentModule: {fileID: 393669152}
+  checkingsAccount: {fileID: 1550613055}
   interestRates: []
 --- !u!114 &1550613055
 MonoBehaviour:
@@ -7057,6 +7047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   investmentModule: {fileID: 1304500105}
+  checkingsAccount: {fileID: 1550613055}
 --- !u!4 &1550613057
 Transform:
   m_ObjectHideFlags: 0
@@ -7071,6 +7062,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1550613058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550613052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ad8690f76c73e448a1207e75b6ec7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yearProgressBar: {fileID: 0}
+  eventReportBox:
+    active: 0
+    panel: {fileID: 0}
+    menu: {fileID: 0}
+    titleBox: {fileID: 0}
+    descriptionBox: {fileID: 0}
+  checkingsAccount: {fileID: 1550613055}
+  savingsAccount: {fileID: 1550613054}
 --- !u!1 &1639800184
 GameObject:
   m_ObjectHideFlags: 0
@@ -9059,6 +9071,8 @@ MonoBehaviour:
     menu: {fileID: 0}
     titleBox: {fileID: 0}
     descriptionBox: {fileID: 0}
+  checkingsAccount: {fileID: 0}
+  savingsAccount: {fileID: 0}
 --- !u!1 &3262320180051572042
 GameObject:
   m_ObjectHideFlags: 0

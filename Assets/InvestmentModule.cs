@@ -11,7 +11,7 @@ public class InvestmentModule : MonoBehaviour
   public TMPro.TMP_Text amount;
   public TMPro.TMP_Text addName;
   public TMPro.TMP_Text removeName;
-  public InputField inputField;
+  public TMPro.TMP_InputField inputField;
 
   private Report addFundsFunction;
   private Report removeFundsFunction;

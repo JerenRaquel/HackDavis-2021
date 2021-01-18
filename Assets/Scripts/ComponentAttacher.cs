@@ -16,6 +16,8 @@ public class ComponentAttacher : MonoBehaviour
 {
   public ContainerBars.ProgressSystem yearProgressBar;
   public EventReportBox eventReportBox;
+  public CheckingsAccount checkingsAccount;
+  public SavingsAccount savingsAccount;
 
   void Start()
   {
@@ -23,5 +25,9 @@ public class ComponentAttacher : MonoBehaviour
       GameController.instance.yearProgressBar = yearProgressBar;
     if (eventReportBox != null && eventReportBox.active)
       GameController.instance.eventReportBox = eventReportBox;
+    if (savingsAccount != null)
+      GameController.instance.savingsAccount = savingsAccount;
+    if (checkingsAccount != null)
+      GameController.instance.checkingsAccount = checkingsAccount;
   }
 }
