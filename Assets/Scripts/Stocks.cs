@@ -169,7 +169,6 @@ public class Stocks : Investment
   {
     return stock.CurrentValue;
   }
-
   /* This function indicates progression of one year for Stocks.   
      After each year, current price of shares from stock companies
      are subjected to change. This function, therefore, updates
@@ -192,6 +191,7 @@ public class Stocks : Investment
     // Gets the rate for the current year
     // This rate will subject current price of stock to change
     stock.CurrentValue = ss.GetRateAtYear(year, rateComponents);
+    investmentModule.UpdateValue(DisplayStockCurrentValue());
   }
 }
 

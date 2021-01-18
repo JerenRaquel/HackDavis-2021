@@ -69,6 +69,7 @@ public class SavingsAccount : Investment
         totalValue = totalValue + totalValue * rate;
         year++;
         this.rate = interestRates[year];
+        investmentModule.UpdateValue(DisplayAmount());
     }
 
 }

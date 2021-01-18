@@ -72,7 +72,7 @@ public class CheckingsAccount : Investment
       return;
     }
     totalValue -= expense;
+
+    investmentModule.UpdateValue(DisplayAmount());
   }
-
-
 }
