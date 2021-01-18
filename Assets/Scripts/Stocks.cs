@@ -191,6 +191,7 @@ public class Stocks : Investment
         // Gets the rate for the current year
         // This rate will subject current price of stock to change
         stock.CurrentValue = ss.GetRateAtYear(year, rateComponents);
+        investmentModule.UpdateValue(DisplayStockCurrentValue());
     }
 }
 
