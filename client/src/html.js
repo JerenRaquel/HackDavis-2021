@@ -11,11 +11,16 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        {/* material ui fonts */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
         {/* necessary because UnityLoader.js has too many bugs */}
         <script src="v1.0/Build/UnityLoader.js"></script>
         {props.headComponents}
       </head>
-      <body {...props.bodyAttributes}>
+      <body {...props.bodyAttributes} style={{ overflow: "hidden", margin: 0 }}>
         {props.preBodyComponents}
         <div
           key={`body`}

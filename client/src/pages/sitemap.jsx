@@ -4,7 +4,6 @@ import { graphql } from "gatsby";
 export default function MyFiles({ data }) {
   console.log(data);
   return (
-    // <Layout>
     <div>
       <h1>Site Pages</h1>
       <table>
@@ -28,7 +27,6 @@ export default function MyFiles({ data }) {
         </tbody>
       </table>
     </div>
-    // </Layout>
   );
 }
 

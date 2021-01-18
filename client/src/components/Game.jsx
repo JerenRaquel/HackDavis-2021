@@ -28,7 +28,7 @@ const Game = ({ ...props }) => {
             className="fullscreen"
             onClick={() => unityInstance.current.SetFullscreen(1)}
           />
-          <div className="title">Pumpkin Chad: The Haunting v1.0</div>
+          <div className="title">Stonks by Segmentation Fault</div>
         </div>
       </div>
     </div>
