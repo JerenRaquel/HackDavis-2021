@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -378,7 +378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1799744522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,6 +510,8 @@ MonoBehaviour:
     menu: {fileID: 0}
     titleBox: {fileID: 0}
     descriptionBox: {fileID: 0}
+  checkingsAccount: {fileID: 0}
+  savingsAccount: {fileID: 0}
 --- !u!4 &2138960499
 Transform:
   m_ObjectHideFlags: 0
