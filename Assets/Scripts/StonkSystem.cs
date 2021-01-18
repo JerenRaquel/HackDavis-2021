@@ -14,7 +14,8 @@ public class RateComponents
   // The range of flucuations
   public float fluxAmplitued = 50f;
 
-  public RateComponents(float baseRate, float luckyPercentage, float startingRate, float fluxAmplitued) {
+  public RateComponents(float baseRate, float luckyPercentage, float startingRate, float fluxAmplitued)
+  {
     this.baseRate = baseRate;
     this.luckyPercentage = luckyPercentage;
     this.startingRate = startingRate;
@@ -51,24 +52,24 @@ public class StonkSystem : MonoBehaviour
   }
 
   // TEMP For debugging sake
-  public bool isOn = false;
-  private int year = 0;
-  public RateComponents rateComponents;
-  public TMPro.TMP_Text textbox;
-  private float time;
-  public float delay;
-  private float prevYear = 1f;
-  private void Update()
-  {
-    if (isOn && time <= Time.time)
-    {
-      time += delay;
-      //   textbox.text = GetRateAtYear(year, in rateComponents).ToString("F2");
-      float currentYear;
-      float val = GetRateAsPercentageAtYear(year, prevYear, out currentYear, in rateComponents);
-      textbox.text = val.ToString("F2");
-      prevYear = currentYear;
-      year++;
-    }
-  }
+  // public bool isOn = false;
+  // private int year = 0;
+  // public RateComponents rateComponents;
+  // public TMPro.TMP_Text textbox;
+  // private float time;
+  // public float delay;
+  // private float prevYear = 1f;
+  // private void Update()
+  // {
+  //   if (isOn && time <= Time.time)
+  //   {
+  //     time += delay;
+  //     //   textbox.text = GetRateAtYear(year, in rateComponents).ToString("F2");
+  //     float currentYear;
+  //     float val = GetRateAsPercentageAtYear(year, prevYear, out currentYear, in rateComponents);
+  //     textbox.text = val.ToString("F2");
+  //     prevYear = currentYear;
+  //     year++;
+  //   }
+  // }
 }
