@@ -12,7 +12,7 @@ export default function HTML(props) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         {/* necessary because UnityLoader.js has too many bugs */}
-        <script src="v1.1/Build/UnityLoader.js"></script>
+        <script src="v1.0/Build/UnityLoader.js"></script>
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
